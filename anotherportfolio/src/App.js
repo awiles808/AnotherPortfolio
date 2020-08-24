@@ -5,17 +5,19 @@ import React from 'react';
 // import About from './About';
 // import Portfolio from './Portfolio';
 // import Contact from './Contact';
+// import { Route, Swtich } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles =makeStyles({})
 
-function App() {
+export default function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-    <h1>
-      This is Anotha one
-    </h1>
+    <div className={classes.container}>
+   
     </div>
   );
 }
 
-export default App;
+
  
