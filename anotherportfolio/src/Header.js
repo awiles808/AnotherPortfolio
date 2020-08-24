@@ -5,9 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import {withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MenuAppBar() {
+const Header= (props) => {
+    const {history } =props;
+
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,7 +35,8 @@ export default function MenuAppBar() {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handleMenuClick = (pageURL) => {
+        history.push(pageURL);
         setAnchorEl(null);
     };
 
@@ -67,10 +70,12 @@ export default function MenuAppBar() {
                                     horizontal: 'right',
                                 }}
                                 open={open}
-                                onClose={handleClose}
+                                onClose={ () => setAnchorEl(null)}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={() =>handleMenuClick('/')}>Home</MenuItem>
+                                <MenuItem onClick={() =>handleMenuClick('about')}>About Me</MenuItem>
+                                <MenuItem onClick={() => handleMenuClick('/portfolio')}>Portfolio</MenuItem>
+                                <MenuItem onClick={() => handleMenuClick('/contact')}>Contact</MenuItem>
                             </Menu>
                         </div>
                    
@@ -79,3 +84,5 @@ export default function MenuAppBar() {
         </div>
     );
 } 
+
+export default withRouter (Header);
