@@ -1,6 +1,6 @@
 import React from 'react';
 import "./styles.css";
-// import Header from './Header';
+import Header from './Header';
 import Home from './Home';
 import About from './About';
 import Portfolio from './Portfolio';
@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className={classes.container}>
 
-      {/* <Header /> */}     
+      <Header />     
       <Switch>
         <Route exact from="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} /> 
