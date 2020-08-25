@@ -20,13 +20,20 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     title: {
-        flexGrow: 1,
+        [theme.breakpoints.down('sm')] : {
+        flexGrow: 1
+        } 
     },
+    headerOptions: {
+        display: "flex",
+        flex: 1,
+        justifyContent: "space-evenly"
+    }
      
 }));
 
 const Header= (props) => {
-    const {history } =props;
+    const { history } =props;
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -36,10 +43,14 @@ const Header= (props) => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleMenuClick = (pageURL) => {
+    const handleMenuClick = pageURL => {
         history.push(pageURL);
         setAnchorEl(null);
     };
+    const handleButtonClick = pageURL => {
+        history.push(pageURL)
+         
+    }
 
     return (
         <div className={classes.root}>
@@ -52,7 +63,7 @@ const Header= (props) => {
                     <Typography variant="h6" className={classes.title}>
                         Photos
                     </Typography>
-                        <div>
+                        
                         {isMobile ? (
                             <>
                             <IconButton 
@@ -87,16 +98,21 @@ const Header= (props) => {
                             </Menu>
                             </>  
                             ) : (
-                                <Button  variant ="contained" > HOME </Button>
+                                <div className={classes.headerOptions}>
+                                <Button variant="contained" onClick={() => handleButtonClick('/')}>Home </Button>
+                                <Button variant="contained" onClick={() => handleButtonClick('/about')}>About </Button>
+                                <Button variant="contained" onClick={() => handleButtonClick('/portfolio')}>Portfolio </Button>
+                                <Button variant="contained" onClick={() => handleButtonClick('/contact')}>Contact </Button>
+                                </div>
 
-                               
                             )}
-                        </div>
+                         
+                       
                    
                 </Toolbar>
             </AppBar>
         </div>
     );
-} 
+}; 
 
 export default withRouter (Header);
