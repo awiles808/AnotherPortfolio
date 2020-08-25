@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -7,7 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import {withRouter } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { withRouter } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,18 +22,16 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
+     
 }));
 
 const Header= (props) => {
     const {history } =props;
-
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-
-  
-
+    const theme  =useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -50,13 +51,20 @@ const Header= (props) => {
                     </IconButton> */}
                     <Typography variant="h6" className={classes.title}>
                         Photos
-          </Typography>
-                    
+                    </Typography>
                         <div>
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"  onClick={handleMenu}>
+                        {isMobile ? (
+                            <>
+                            <IconButton 
+                            edge="start" 
+                            className={classes.menuButton} 
+                            color="inherit" 
+                            aria-label="menu" 
+                            onClick={handleMenu}
+                            >
                             <MenuIcon />
                         </IconButton>
-                            
+
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorEl}
@@ -70,13 +78,19 @@ const Header= (props) => {
                                     horizontal: 'right',
                                 }}
                                 open={open}
-                                onClose={ () => setAnchorEl(null)}
+                                onClose={() => setAnchorEl(null)}
                             >
-                                <MenuItem onClick={() =>handleMenuClick('/')}>Home</MenuItem>
-                                <MenuItem onClick={() =>handleMenuClick('about')}>About Me</MenuItem>
+                                <MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
+                                <MenuItem onClick={() => handleMenuClick('about')}>About Me</MenuItem>
                                 <MenuItem onClick={() => handleMenuClick('/portfolio')}>Portfolio</MenuItem>
                                 <MenuItem onClick={() => handleMenuClick('/contact')}>Contact</MenuItem>
                             </Menu>
+                            </>  
+                            ) : (
+                                <Button  variant ="contained" > HOME </Button>
+
+                               
+                            )}
                         </div>
                    
                 </Toolbar>
