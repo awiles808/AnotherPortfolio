@@ -54,8 +54,9 @@ const Header= (props) => {
 
     return (
         <div className={classes.root}>
+        {/* <SideBar /> */}
           
-            <AppBar position="static">
+            <AppBar position="static" style={{ background: "#222" }}>
                 <Toolbar>
                     {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
