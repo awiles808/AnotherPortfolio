@@ -1,9 +1,18 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {Typography, Button, Grid, Box} from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({}))
 
 const About = () => {
-    return <div>
-        This Here Is The About Page
-    </div>;
+
+    const classes =useStyles() 
+
+    return (
+        <Box component="div" style={{ background: "#233",  height: "100vh"}}>
+
+        </Box>
+    )
 };
 
 export default About; 

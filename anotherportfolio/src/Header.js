@@ -62,7 +62,7 @@ const Header= (props) => {
                         <MenuIcon />
                     </IconButton> */}
                     <Typography variant="h6" className={classes.title}>
-                        Photos
+                        Wiles Development
                     </Typography>
                         
                         {isMobile ? (

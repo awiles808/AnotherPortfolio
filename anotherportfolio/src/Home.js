@@ -29,6 +29,16 @@ const useStyles = makeStyles(theme => ({
         // backgroundRepeat: "no-repeat",
         // backgroundPosition: "center center",
         // backgroundSize: "cover",
+    },
+    "@global":{
+        body: {
+            backgroundImage: `url(${Image})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            height: "100%"
+        }
     }
    
 }))
