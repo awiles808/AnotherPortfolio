@@ -4,6 +4,12 @@ import { Typography, Avatar, Grid, Box } from "@material-ui/core";
 import Typed from "react-typed"
 import avatar from "./logo.png";
 import Image from "./coffee-apple.jpg";
+import ParticlesFun from "./PartilcesFun";
+
+
+
+
+
 const useStyles = makeStyles(theme => ({
     avatar: {
         width: theme.spacing(15),
@@ -46,7 +52,8 @@ const useStyles = makeStyles(theme => ({
 const Header = () => {
     const classes = useStyles()
     return (
-        
+        <>
+   <ParticlesFun />
         <Box className={classes.typedContainer}>
             <Grid container justify="center">
                 <Avatar className={classes.avatar} src={avatar} alt="Auburn" />
@@ -64,6 +71,7 @@ const Header = () => {
                 />
             </Typography>
         </Box>
+   </>
         
     );
 };
