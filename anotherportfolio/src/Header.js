@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme  } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +10,8 @@ import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { withRouter } from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+import avatar from "./logo.png";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flex: 1,
         justifyContent: "space-evenly"
+    },
+    avatar: {
+        display: "block",
+        margin: "1 rem auto",
+        width: theme.spacing(10),
+        height: theme.spacing(10)
     }
      
 }));
@@ -61,6 +69,7 @@ const Header= (props) => {
                     {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton> */}
+                    <Avatar className={classes.avatar} src={avatar} alt="Auburn" />
                     <Typography variant="h6" className={classes.title}>
                         Wiles Development
                     </Typography>
