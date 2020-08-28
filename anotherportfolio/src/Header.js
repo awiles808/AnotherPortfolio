@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         display: "block",
-        margin: "1 rem auto",
-        width: theme.spacing(10),
-        height: theme.spacing(10)
+        margin: "0.5 rem auto",
+        width: theme.spacing(11),
+        height: theme.spacing(11)
     }
      
 }));
@@ -70,9 +70,9 @@ const Header= (props) => {
                         <MenuIcon />
                     </IconButton> */}
                     <Avatar className={classes.avatar} src={avatar} alt="Auburn" />
-                    <Typography variant="h6" className={classes.title}>
+                    {/* <Typography variant="h6" className={classes.title}>
                         Wiles Development
-                    </Typography>
+                    </Typography> */}
                         
                         {isMobile ? (
                             <>
